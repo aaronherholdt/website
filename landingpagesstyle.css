@@ -79,6 +79,7 @@
     line-height: 80px;
     margin-top: 50px;
     margin-left: 350px;
+    cursor: pointer;
 }
 
 .social-icons ul li{
@@ -86,6 +87,10 @@
     font-size: 30px;
     display: inline-block;
     margin: 0 50px;
+}
+
+.social-icons ul li a{
+    color: black;
 }
 
 
@@ -128,6 +133,7 @@
     }
 }
 
+
 @media (max-width: 385px){
 
     .container-landing-page{
@@ -152,4 +158,3 @@
         margin-top: 0px;
     }
 }
-
