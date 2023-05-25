@@ -1,0 +1,1864 @@
+html {
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  scroll-snap-type: y mandatory;
+  overflow-x: hidden;
+}
+
+
+.scroll-section-1,
+.scroll-section-2,
+.scroll-section-3,
+.scroll-section-4,
+.scroll-section-5 {
+  scroll-snap-align: start;
+  min-height: 100vh;
+}
+
+
+.unducated-logo, .language-switcher, .landing-text-container {
+  z-index: 2; /* higher value */
+}
+
+.bubble {
+  z-index: 1; /* lower value */
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: lightblue;  /* Make bubbles visible */
+  opacity: 0.7;
+  bottom: 0px; /* Start from below the screen */
+  animation: bubbleRise 20s infinite both;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 70%,rgba(255,255,255,0) 100%);
+  box-shadow: 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff;
+  overflow: hidden;
+}
+
+
+.bubble.small {
+  width: 10px;
+  height: 10px;
+  animation-duration: 20s; /* Small bubbles rise faster */
+  background-color:black;
+}
+
+/* Define the animation */
+@keyframes bubbleRise {
+  0% {
+      transform: translateX(0);
+  }
+  50% {
+      transform: translateX(50px); /* Bubbles move slightly on the x-axis while rising, for realism */
+  }
+  100% {
+      transform: translateX(0);
+      bottom: 100%; /* Bubbles disappear at the top of the screen */
+  }
+}
+
+
+/*Desktop Hide*/
+
+.action-tablet{
+  display: none;
+}
+
+
+.mobile-container {
+  display: none;
+}
+
+.content-wrapper-tablet{
+  display: none;
+}
+
+.pillar-header-image-tablet{
+  display: none;
+}
+
+.video-section-mobile {
+  display: none;
+}
+
+.container-landing-page {
+  height: 100vh;
+  width: 100%;
+}
+
+
+.unducated-logo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  z-index: 10; /* Ensure the logo is above other content */
+  width: 400px; /* Adjust the value to change the logo size */
+}
+
+.landing-text-container {
+  display: flex;
+  flex-direction: column; /* Add this to stack landing-text and aboutus on top of each other */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: darkslategray;
+}
+
+.landing-text {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Yomogi', cursive;
+  max-width: 800px;
+  margin-bottom: 20px; /* Add margin to separate the text from the button */
+  color: white;
+  background-color: darkslategray;
+}
+
+.aboutus {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.aboutus button {
+  background-color: red;
+  border: 2px solid black;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Yomogi', cursive;
+  z-index: 10; /* Update this line */
+}
+
+.aboutus button:hover {
+  background-color:red;
+  color: black;
+  font-family: 'Yomogi', cursive;
+}
+
+.language-switcher {
+  display: none;
+}
+
+.language-switcher {
+  position: absolute;
+  top: 30px;
+  right:30px;
+  z-index: 10; /* Ensure the language switcher is above other content */
+  background-color: lightgray;
+  border-color: none;
+  text-align: center;
+}
+
+.language-switcher select {
+  font-size: 25px; /* Increase the font size */
+  padding: 10px 15px; /* Add some padding to make the select element bigger */
+  border-radius: 10px; /* Add a border-radius to round the corners (optional) */
+  background-color: white;
+  border-color: none;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.aboutus-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px; /* Add some padding to separate the button from the page bottom */
+  
+}
+
+.modal-content h4 {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Yomogi', cursive;
+}
+
+.modal-content p{
+  font-size: 0.9rem;
+  font-family: 'Roboto Mono', monospace;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-text-container {
+  grid-area: text1;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.modal-image {
+  grid-area: image;
+}
+
+.modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-text {
+  width: 100%;
+  font-size: 0.9rem;
+  font-family: 'Roboto Mono', monospace;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px 40px 40px;
+  border: 1px solid #888;
+  width: 60%; /* Decrease width */
+  height: 70%; /* Decrease height */
+  overflow-y: auto;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-grid-container {
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: 2.6fr 1fr;
+grid-template-areas:
+  "image text1"
+  "text2 text2";
+width: 100%;
+height: 100%;
+}
+
+.modal-text-container-2 {
+  grid-area: text2;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.close-modal:hover {
+  color: #888;
+}
+
+
+.desktop-aboutus {
+  display: block;
+}
+
+/* Pillars Page */
+
+.pillar-box.collapsed .expanded,
+.pillar-box.collapsed .bullet-points,
+.pillar-box.collapsed .video-container {
+  display: none;
+}
+
+.pillar-box.expanded .summary-list {
+  display: none;
+}
+
+.pillars-page-desktop {
+  height: 100vh;
+  width: 100%;
+}
+
+.Phil_Pillars {
+  font-size: 48px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-family: 'Yomogi', cursive;
+  text-align: center;
+}
+
+.close-btn {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.pillar-box.expanded .close-btn {
+  display: block;
+}
+
+.pillar-box.expanded:not(:hover) .close-btn {
+  position: fixed;
+}
+
+.expanded .collapsed-content-1 {
+  display: none;
+}
+
+.expanded-content p {
+  text-indent: -1em;
+  padding-left: 1em;
+  font-size: 0.9rem;
+  margin-left: 0px;
+}
+
+.expanded-content li {
+  margin-bottom: 0rem;
+  text-indent: -1em;
+  padding-left: 1em
+}
+
+.top-bullet{
+  line-height: 0.3rem;
+  margin-left: 0ss;
+}
+
+.pillar-content-1 p:first-child,
+.expanded-content p:first-child {
+  margin-bottom: 0; /* Adjust this value to control the space between the bullet point title and its description */
+}
+
+.pillar-content-1 li + li p:first-child,
+.expanded-content li + li p:first-child {
+  margin-top: 1rem; /* Adjust this value to control the space between bullet points */
+}
+
+.description {
+  margin-top: -15px; /* Adjust this value based on the desired closeness */
+  margin-bottom: 20px;
+}
+
+.bullet-point {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.summary-list ul {
+  margin-left: 0.1rem;
+}
+
+.summary-list li {
+  margin-bottom: 0.5rem; /* Adjust this value to control the space between list items */
+}
+
+
+.pillar-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* change this from 'center' to 'flex-start' */
+  margin-top: 24px;
+}
+
+
+.pillar-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+  height: 480px;
+  padding: 10px;
+  padding-left: 5px;
+  box-sizing: border-box;
+  background-color: lightgray;
+  margin: 10px;
+  cursor: pointer;
+  z-index: 1;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.content-wrapper-desktop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.pillar-box.collapsed:hover {
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 20px; /* Add this line */
+}
+
+.pillar-1:hover {
+  background-image: url(images/Guiding\ v\ teaching\ pillar.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-blend-mode: multiply;
+  background-size: 70%; /* adjust this value to change the size of the image */
+  background-color: rgba(255, 255, 255, 0.7); /* increased transparency for a lighter image */
+}
+
+.pillar-2:hover {
+  background-image: url(images/Concepts\ over\ courseware\ pillar.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-blend-mode: multiply;
+  background-size: 70%; /* adjust this value to change the size of the image */
+  background-color: rgba(255, 255, 255, 0.7); /* increased transparency for a lighter image */
+}
+
+.pillar-3:hover {
+  background-image: url(images/We\ over\ me\ pillar.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-blend-mode: multiply;
+  background-size: 70%; /* adjust this value to change the size of the image */
+  background-color: rgba(255, 255, 255, 0.7); /* increased transparency for a lighter image */
+}
+
+.pillar-4:hover {
+  background-image: url(images/chaos\ over\ organization\ pillar.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-blend-mode: multiply;
+  background-size: 70%; /* adjust this value to change the size of the image */
+  background-color: rgba(255, 255, 255, 0.7); /* increased transparency for a lighter image */
+}
+
+.pillar-5:hover {
+  background-image: url(images/Life\ long\ learning\ vs\ finite\ education\ pillar.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-blend-mode: multiply;
+  background-size: 70%; /* adjust this value to change the size of the image */
+  background-color: rgba(255, 255, 255, 0.7); /* increased transparency for a lighter image */
+}
+
+
+.heading {
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Roboto Mono', monospace;
+  text-align: center;
+  color: #FF0000;
+}
+
+.pillar-box.expanded {
+  cursor: default;
+  position: fixed;
+  top: 50%; /* Update this line */
+  left: 50%; /* Add this line */
+  width: 90%; /* Update this line */
+  height: 90%; /* Update this line */
+  z-index: 100; /* Update this line */
+  transition: all 0.1s ease-in-out; /* Add this line */
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid black;
+  border-radius: 10px; /* Add this line */
+  font-size-adjust: 8px;
+  transform: translate(-50%, -50%); /* Add this line */
+  margin: 0; /* Add this line */
+}
+
+.description-container {
+  width: 50%;
+  margin-right: 2%; /* Adjust this value if needed */
+}
+
+
+.video-container {
+  width: 50%;
+  position: relative;
+  padding-bottom: 40%; /* Adjust this value to control the video height */
+  height: 0; /* Update this line */
+  overflow: hidden;
+}
+
+.video {
+  width: 100%;
+  height: 100%; /* Update this line */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.image-container {
+  width: 50%;
+  position: relative;
+  padding-bottom: 45%; /* Adjust this value to control the image height */
+  height: 0; /* Update this line */
+  overflow: hidden;
+}
+
+.pillar-image {
+  max-width: 90%; /* Adjust this value to make the image bigger or smaller */
+  display: block; /* Make the image a block element so it is on its own line */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+.image {
+  width: 100%;
+  height: 100%; /* Update this line */
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover; /* Add this line to maintain the aspect ratio of the image */
+}
+
+.image-description {
+  text-align: center; /* Center the description text */
+  font-size: 14px; /* Adjust the font size */
+  margin-top: 5px; /* Add some space between the image and the description */
+  color: black;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Yomogi', cursive;
+}
+
+.darkened-background {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.expanded-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; /* Update this line */
+}
+
+.description-container {
+  width: 50%;
+  margin-right: 2%; /* Adjust this value if needed */
+}
+
+.expanded .bullet-point {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+.expanded .description {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.expanded .pillar-content-1 {
+  display: flex; /* Add this line */
+}
+
+
+.expanded-content .bullet-point + .description {
+  margin-top: 0;
+}
+
+.expanded-content p:first-child {
+  margin-top: 0;
+}
+
+.expanded-content .video-container video {
+  width: 100%;
+  height: auto;
+}
+
+
+
+
+/*Reviews Page*/
+
+.reviews-page-desktop{
+  background-color: darkslategray;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.reviews-title {
+  text-align: center;
+  font-size: 48px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-family: 'Yomogi', cursive, Arial, sans-serif;
+  color: white;
+}
+
+.reviews-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-left: 50;
+  background-color: #f0f0f0;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center; /* Center all text inside the container */
+}
+
+.reviews-container p {
+  font-size: 18px;
+  font-family: 'Roboto Mono', monospace, Courier, monospace;
+  color: black;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.reviews-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* If you want it to take up the full height of the parent container */
+}
+
+.reviews-subtitle {
+  font-size: 24px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-family: 'Roboto Mono', monospace, Courier, monospace;
+  font-weight: bold;
+}
+
+.review-item{
+  max-width: 600px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color:black;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center; /* Center all text inside the container */
+}
+
+.review-item p{
+  color: white;
+}
+
+.paragraphbold {
+  font-weight: bold;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.swiper {
+  width: 60%;  /* adjust as needed */
+  height: 60%;  /* adjust as needed */
+  margin: 0 auto; /* centers the container horizontally */
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: auto; /* Maintains aspect ratio */
+  object-fit: contain;
+}
+
+
+.facebook-reviews-button {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.facebook-reviews-button button {
+  background-color: red;
+  border: 2px solid black;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Yomogi', cursive;
+}
+
+.facebook-reviews-button button:hover {
+  background-color: red;
+  color: black;
+}
+
+/* Pricing Page */
+
+.price-page {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:white;
+  position: relative;
+}
+
+.Pricing-Terms {
+  text-align: center;
+  font-size: 48px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-family: 'Yomogi', cursive, Arial, sans-serif;
+  color: black;
+}
+
+.PTC-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.pricing-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.box-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch; /* Stretch the boxes to have the same height */
+  width: 100%;
+  height: 85%;
+}
+
+.box-left,
+.box-centre,
+.box-right {
+  background-color:darkslategray;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  width: calc(33.333% - 20px); /* Set the same width for all three boxes */
+  max-width: 300px; /* Adjust the maximum width of the boxes, if desired */
+  margin: 0 10px; /* Add space between the boxes */
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', monospace;
+  border-radius: 10px;
+  min-height: 110%;
+}
+
+.box-left h2,
+.box-centre h2,
+.box-right h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  margin-top: 25px;
+  color: white;
+}
+
+.box-right h3 {
+  font-size: 16px;
+  margin-top: 16px;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  color: white;
+}
+
+.box-left .price {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 0;
+  color: white;
+}
+
+.box-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute the space evenly between the sections */
+}
+
+.box-centre li {
+  margin-bottom: 8px;
+  text-align: left;
+  padding-left: 20px;
+  color: white;
+}
+
+.box-centre ul {
+  margin-top: 16px;
+  color: white;
+}
+
+.top-section,
+.bottom-section {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.top-section {
+margin-bottom: 30px;
+color: white;
+}
+
+.top-section p,
+.bottom-section p{
+  margin-top: 0;
+  color: white;
+}
+
+.top-section ul,
+.bottom-section ul{
+ margin-top: 0;
+ margin-bottom: 16px;
+ color: white;
+}
+
+.box-centre li {
+  margin-bottom: 8px;
+  color: white;
+}
+
+.top-sectionp1{
+  margin-top: 0;
+  color: white;
+}
+
+
+.explanation {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.box-right button {
+  background-color: red;
+  border: 2px solid black;
+  border-radius: 5px;
+  color:white;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Yomogi', cursive;
+}
+
+.box-right button:hover {
+  background-color: red;
+  color: black;
+  font-family: 'Yomogi', cursive;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 90%; /* Set the modal height */
+  overflow-y: auto; /* Add scroll in case the content doesn't fit */
+  font-size: 0.8rem; /* Adjust the font size */
+}
+
+.terms {
+  max-height: 100%;
+  overflow-y: auto;
+  text-align: center;
+}
+
+/* Adjust h4 and h5 sizes */
+.modal-content h4 {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Yomogi', cursive;
+}
+
+.modal-content p {
+  font-size: 0.9rem;
+  font-family: 'Roboto Mono', monospace;
+  margin-top: 0.5rem;
+}
+
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.heading{
+  margin-top: 0px; /* Decrease this value to move the heading higher up */
+}
+
+.box-left {
+  padding-right: 20px; /* Add some padding between the two boxes */
+}
+
+.price,
+#read-terms-btn {
+  margin-top: auto; /* Push the price and button to the bottom of the boxes */
+}
+
+
+
+/* Social-Media */
+
+.Social-media-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: darkslategray;
+  font-family: 'Yomogi', cursive;
+}
+
+.social_media {
+  color: white;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.wrapper-social-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  width: 100%; /* Add this line */
+}
+
+.social-icons {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.social-icons li {
+  margin: 0 15px;
+}
+
+.social-icons a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.social-icons i {
+  font-size: 2rem;
+  margin-right: 10px;
+}
+
+.site-name {
+  display: none;
+}
+
+.social-icons a:hover {
+  color: #007BFF;
+}
+
+.social-icons a:hover .site-name {
+  display: inline-block;
+  font-family: 'Roboto', monospace;
+}
+.social-icons a:hover .fa-facebook-f,
+.social-icons a:hover .fa-facebook-f + .site-name {
+    color: #1877F2;
+}
+
+.social-icons a:hover .fa-twitter,
+.social-icons a:hover .fa-twitter + .site-name {
+    color: #1DA1F2;
+}
+
+.social-icons a:hover .fa-instagram,
+.social-icons a:hover .fa-instagram + .site-name {
+    color: #E4405F;
+}
+
+.social-icons a:hover .fa-youtube,
+.social-icons a:hover .fa-youtube + .site-name {
+    color: #FF0000;
+}
+
+.social-icons a:hover .fa-envelope,
+.social-icons a:hover .fa-envelope + .site-name {
+    color: #D44638;
+}
+
+.social-icons a:hover .fa-line,
+.social-icons a:hover .fa-line + .site-name {
+    color: #00C300;
+}
+
+
+/* Add styles for mobile devices */
+@media (max-width: 767px) {
+
+.action-tablet {
+  display: none;
+}
+
+.tablet-container {
+  display: none;
+}
+
+.scroll-section-1,
+.scroll-section-2,
+.scroll-section-3,
+.scroll-section-4,
+.scroll-section-5 {
+  display: none;
+}
+
+.container-landing-page{
+  display: none;
+}
+
+html {
+  scroll-snap-type: none; /* Disable scroll-snap on mobile */
+}
+
+.scroll-section {
+  scroll-snap-align: none; /* Snap to the start of each section */
+}
+
+.container-landing-page {
+  display: none;
+}
+
+.unducated-logo {
+  display: none;
+}
+
+.mobile-container {
+  display: block;
+}
+
+.landing-page-mobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Change from 'center' to 'space-between' */
+  align-items: center;
+  background-color: darkslategray;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.mobile-top-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Change from 'left' to 'flex-start' */
+  flex-direction: column;
+}
+
+.unducated-logo-mobile {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 300px; /* Adjust the max-width as needed */
+  display: flex;
+  justify-content: center;
+}
+
+/* New styles for logo responsiveness */
+.brand-logo {
+  max-width: 100%;
+  height: auto;
+}
+.landing-text-mobile {
+  text-align: center;
+  font-size: 24px;
+  font-family: 'Yomogi', cursive;
+  max-width: 800px;
+  margin-bottom: 30px; /* Increase the value to push the text down */
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.book-trial-btn-mobile-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.book-trial-btn-mobile button {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Yomogi', cursive;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+              0 0 12px 12px rgba(211, 211, 211, 0.3),
+              0 0 24px 24px rgba(211, 211, 211, 0.2),
+              0 0 48px 48px rgba(211, 211, 211, 0.1);
+}
+
+.book-trial-btn-mobile button.active {
+  background-color: black;
+  color: white;
+  font-family: 'Yomogi', cursive;
+}
+
+.book-trial-btn-mobile button:hover {
+  background-color: black;
+  color: white;
+  font-family: 'Yomogi', cursive;
+}
+
+.see-us-in-action {
+  font-size: 32px;
+  margin-top: 0px;
+  margin-bottom: 16px;
+  font-family: 'Yomogi', cursive;
+  text-align: center;
+}
+
+.video-section-mobile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.video-slide {
+  width: 100%;  /* set this to your preferred value, 100% makes the video take up the full width of its container */
+  margin: 0 auto;  /* this centers the element horizontally */
+  margin-bottom: 8px;  /* I left this as you had it */
+  text-align: center;  /* centers inline or inline-block elements */
+  display: flex;  /* this and the next 2 rules center block elements */
+  align-items: center;
+  justify-content: center;
+}
+
+.video-item {
+  display: block;  /* this changes videos and iframes from inline elements to block elements */
+  max-width: 100%;  /* this ensures that your video won't go outside of its container */
+}
+
+.philosophical-pillars-mobile h2 {
+  font-size: 32px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-family: 'Yomogi', cursive;
+  text-align: center;
+  color: white;
+}
+
+.philosophical-pillars-mobile {
+  text-align: center;
+  padding: 20px 0;
+  background-color: darkslategrey;
+}
+
+.pillar-container-mobile {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.pillar-mobile {
+  background-color: white;
+  color: darkslategrey;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: calc(100% - 40px);
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.pillar-mobile img {
+  width: 100%;
+  height: auto;
+}
+
+.pillar-mobile h3 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-family: 'Yomogi', cursive;
+}
+
+.pillar-mobile p {
+  margin: 0;
+  font-family: 'Roboto Mono', monospace, sans-serif;
+  font-weight: bold;
+}
+
+.pillar-mobile::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Different colors for the bottom border of each pillar */
+.pillar-mobile:nth-child(1)::after {
+  background-color: red;
+}
+
+.pillar-mobile:nth-child(2)::after {
+  background-color: red;
+}
+
+.pillar-mobile:nth-child(3)::after {
+  background-color: red;
+}
+
+.pillar-mobile:nth-child(4)::after {
+  background-color: red;
+}
+
+.pillar-mobile:nth-child(5)::after {
+  background-color: red;
+}
+
+/* Add the thick line at the bottom of the pillar */
+.pillar-mobile::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  border-bottom-left-radius: 10px; /* Add this line */
+  border-bottom-right-radius: 10px; /* Add this line */
+}
+
+.benefits-section-mobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Add space between the benefit blocks */
+  background-color: white; /* Change this to the desired background color */
+}
+
+.benefits-section-mobile h2 {
+  font-size: 32px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-family: 'Yomogi', cursive;
+  text-align: center;
+}
+
+.benefit-block {
+  background-color: lightgray;
+  border-radius: 5px;
+  padding: 20px;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
+  width: 240px; /* Adjust width as needed */
+  text-align: center;
+  font-family: 'Roboto Mono', monospace, Courier, monospace;
+  box-shadow: 0 4px 6px darkslategray,
+              0 0 12px 12px rgba(211, 211, 211, 0.3),
+              0 0 24px 24px rgba(211, 211, 211, 0.2),
+              0 0 48px 48px rgba(211, 211, 211, 0.1);
+  width: 80%; /* Increase the width of the boxes */
+}
+
+.child-benefit span,
+.parent-benefit span {
+  font-weight: bold;
+  color: red;
+}
+
+.child-benefit li,
+.parent-benefit li {
+  list-style-type: none;
+  position: relative;
+  padding-bottom: 8px;
+  font-family: 'Roboto Mono', monospace, sans-serif;
+  font-weight: bold;
+}
+
+.child-benefit li::before,
+.parent-benefit li::before {
+  content: "-";
+  position: absolute;
+  left: -1em;
+  font-weight: bold; /* Make the hyphen bolder */
+  font-size: 18px; /* Increase the hyphen size for a thicker appearance */
+}
+.benefit-block h3 {
+  margin-top: 0;
+  margin-bottom: 8px; /* Add some space below the heading */
+  font-family: 'Yomogi', cursive;
+}
+
+.benefit-block ul {
+  text-align: left; /* Align bullet points to the left */
+  padding-left: 1.2em; /* Adjust the left padding of the bullet points */
+}
+
+.child-benefit {
+ background-color: lightgray;
+}
+
+.parent-benefit {
+  background-color: lightgray;
+}
+
+.reviews-page-mobile {
+  padding: 10px;
+  text-align: center;
+  background-color: darkslategray;
+}
+
+.reviews-title {
+  font-size: 32px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-family: 'Yomogi', cursive;
+  color: white;
+}
+
+.reviews-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightgray;
+  margin-bottom: 10px;
+}
+
+.swiper {
+  width: 100%;  /* adjust as needed */
+  height: 100%;  /* adjust as needed */
+  margin: 0 auto; /* centers the container horizontally */
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: auto; /* Maintains aspect ratio */
+  object-fit: contain;
+}
+
+.reviews-main {
+  margin-bottom: 20px;
+}
+
+.reviews-subtitle {
+  font-size: 24px;
+  font-family: 'Yomogi', cursive;
+  margin-bottom: 10px;
+}
+
+.paragraphbold {
+  font-weight: bold;
+}
+
+.review-item {
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+.facebook-reviews-button button {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Yomogi', cursive;
+}
+
+.facebook-reviews-button button:hover {
+  background-color: black;
+  color: white;
+  font-family: 'Yomogi', cursive;
+}
+
+.pricing-section h1 {
+  font-size: 32px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-family: 'Yomogi', cursive;
+  text-align: center;
+} 
+.pricing-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Add space between pricing blocks */
+}
+
+.pricing-block {
+  background-color: lightgray;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  width: 240px; /* Adjust width as needed */
+  text-align: center;
+  font-family: 'Roboto Mono', monospace, Courier, monospace;
+  box-shadow: 0 4px 6px darkslategray,
+              0 0 12px 12px rgba(211, 211, 211, 0.3),
+              0 0 24px 24px rgba(211, 211, 211, 0.2),
+              0 0 48px 48px rgba(211, 211, 211, 0.1);
+}
+
+.pricing-price {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: 'Roboto Mono', monospace, Courier, monospace;
+}
+
+.pricing-per-month {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-family: 'Roboto Mono', monospace, Courier, monospace;
+}
+
+.pricing-lessons {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: 'Roboto Mono', monospace, Courier, monospace;
+  display: flex; /* Add this */
+  justify-content: center; /* Add this */
+  align-items: center; /* Add this */
+  height: 100%; /* Add this */
+  padding: 0px;
+}
+
+.pricing-lessons li {
+  list-style-type: none; /* Remove the bullet */
+}
+
+.enroll-button button {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Yomogi', cursive;
+}
+
+.enroll-button button.active {
+  background-color: black;
+  color: white;
+  font-family: 'Yomogi', cursive;
+}
+
+.enroll-button button:hover {
+  background-color: black;
+  color: white;
+  font-family: 'Yomogi', cursive;
+}
+
+.wrapper-social-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color:red;
+  padding: 10px 0;
+}
+
+.social-icons {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.social-icons a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: black;
+  font-size: 3vw; 
+  font-size: 1rem;
+}
+
+.social-icons li {
+  margin: 0 0.3rem; /* Adjusted margin between icons */
+}
+
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+.mobile-container {
+  display: none;
+}
+.heading{
+  display: none;
+}
+
+.content-wrapper-desktop{
+  display: none;
+}
+
+.action-tablet{
+  display: block;
+}
+
+.unducated-logo {
+  position: absolute;
+  top: 30px; /* Adjust the top position as needed */
+  left: 50%;
+  transform: translateX(-50%); /* Center the logo horizontally */
+  z-index: 10; /* Ensure the logo is above other content */
+  width: 400px; /* Adjust the value to change the logo size */
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  border: 1px solid #888;
+  width: 80%; /* Adjust the width as needed */
+  height: 80%; /* Adjust the height as needed */
+  max-width: 800px; /* Add a max-width to limit the modal size */
+  max-height: 80vh; /* Add a max-height to limit the modal size */
+  overflow-y: auto;
+  padding: 20px;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+
+.modal-image {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.modal-text-container {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.modal-text-container-2 {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.pillars-page-desktop{
+  height: auto;
+}
+.pillar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap; /* if you want the items to wrap to the next line if the screen width isn't enough */
+}
+
+.pillar-box {
+  width: 100%; /* adjust to the value you desire */
+  height: auto; /* adjust to the value you desire */
+  border-radius: 10px;
+}
+
+.content-wrapper-tablet{
+  display: flex;
+  align-items: start;
+}
+
+.pillar-header-image-tablet {
+  display: flex;
+  flex-direction: column;
+  align-items: start; /* align left */
+  height: auto;
+  width: 20%; /* Adjust this to make the image smaller */
+  text-align: center;
+}
+
+.heading-tablet {
+  font-weight: bold;
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+  text-align: center;
+  color: red;
+}
+
+.pillar-image-tablet{
+  margin-top: 32px;
+  height: auto;
+  width: 100%; 
+  justify-content: center;
+}
+
+.pillar-box {
+  cursor: default; /* Remove the pointer cursor */
+}
+
+.pillar-box.collapsed {
+  pointer-events: none; /* Disable click events */
+}
+
+.video-container {
+  display: none; /* initially hidden */
+  width: 100%;
+  height: auto;
+}
+
+.pillar-box.expanded .video-container {
+  display: block; /* shown when expanded */
+}
+
+
+.reviews-page{
+  height: 80%;
+  width: auto;
+}
+
+.reviews-container {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+/* Landscape Styles */
+@media (orientation: landscape) {
+
+.action-tablet{
+  display: block;
+}
+  
+.mobile-container {
+  display: none;
+}
+.heading{
+  display: none;
+}
+
+.content-wrapper-desktop{
+  display: none;
+}
+
+.unducated-logo {
+  position: absolute;
+  top: 30px; /* Adjust the top position as needed */
+  left: 50%;
+  transform: translateX(-50%); /* Center the logo horizontally */
+  z-index: 10; /* Ensure the logo is above other content */
+  width: 400px; /* Adjust the value to change the logo size */
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  border: 1px solid #888;
+  width: 80%; /* Adjust the width as needed */
+  height: 80%; /* Adjust the height as needed */
+  max-width: 800px; /* Add a max-width to limit the modal size */
+  max-height: 80vh; /* Add a max-height to limit the modal size */
+  overflow-y: auto;
+  padding: 20px;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+
+.modal-image {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.modal-text-container {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.modal-text-container-2 {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.pillar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap; /* if you want the items to wrap to the next line if the screen width isn't enough */
+}
+
+.pillar-box {
+  width: 100%; /* adjust to the value you desire */
+  height: auto; /* adjust to the value you desire */
+  border-radius: 10px;
+}
+
+.content-wrapper-tablet{
+  display: flex;
+  align-items: start;
+}
+
+.pillar-header-image-tablet {
+  display: flex;
+  flex-direction: column;
+  align-items: start; /* align left */
+  height: auto;
+  width: 20%; /* Adjust this to make the image smaller */
+  text-align: center;
+}
+
+.heading-tablet {
+  font-weight: bold;
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+  text-align: center;
+  color: red;
+}
+
+.pillar-image-tablet{
+  margin-top: 32px;
+  height: auto;
+  width: 100%; 
+  justify-content: center;
+}
+
+.pillar-box {
+  cursor: default; /* Remove the pointer cursor */
+}
+
+.pillar-box.collapsed {
+  pointer-events: none; /* Disable click events */
+}
+
+.reviews-page{
+  height: 80%;
+  width: auto;
+}
+
+.reviews-container {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+  
+}
+
+}
