@@ -685,26 +685,37 @@ height: 100%;
   margin-bottom: 8px;
 }
 
-.swiper {
-  width: 60%;  /* adjust as needed */
-  height: 60%;  /* adjust as needed */
-  margin: 0 auto; /* centers the container horizontally */
+.swiper-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: max-content;
 }
 
 .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   text-align: center;
   font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 5px;
+  border-color: red;
+  border-radius: 5px;
+}
+
+.swiper-pagination{
+  font-family: 'Roboto Mono', monospace, Courier, monospace;
+  font-weight: bold;
 }
 
 .swiper-slide img {
   display: block;
-  width: 100%;
+  max-width: 100%;
   height: auto; /* Maintains aspect ratio */
   object-fit: contain;
+  margin: auto; /* This can also help center the image if needed */
+  
 }
 
 
