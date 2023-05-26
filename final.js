@@ -1,3 +1,16 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+  var swiper = new Swiper(".mySwiper", {
+    pagination: {
+      el: ".swiper-pagination",
+      type: "fraction",
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+});
+
 function handlePillarClick(pillarNumber, event) {
   event.stopPropagation();
   const pillarBoxes = document.querySelectorAll('.pillar-box');
@@ -167,16 +180,3 @@ window.onscroll = function() {
     header.classList.remove("scrolled");
   }
 };
-  
-document.addEventListener('DOMContentLoaded', (event) => {
-  var swiper = new Swiper(".mySwiper", {
-    pagination: {
-      el: ".swiper-pagination",
-      type: "fraction",
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-});
