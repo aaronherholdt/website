@@ -715,7 +715,14 @@ height: 100%;
   height: auto; /* Maintains aspect ratio */
   object-fit: contain;
   margin: auto; /* This can also help center the image if needed */
-  
+}
+
+.swiper-button-next::after, .swiper-rtl .swiper-button-prev::after {
+  color: red;
+}
+
+.swiper-button-prev::after, .swiper-rtl .swiper-button-prev::after {
+  color: red;
 }
 
 
@@ -1441,6 +1448,14 @@ html {
   width: 100%;
   height: auto; /* Maintains aspect ratio */
   object-fit: contain;
+}
+
+.swiper-button-next::after, .swiper-rtl .swiper-button-prev::after {
+  color: red;
+}
+
+.swiper-button-prev::after, .swiper-rtl .swiper-button-prev::after {
+  color: red;
 }
 
 .reviews-main {
